@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+  </head>
+  <body>
+    <%- include('./partials/_navbar.ejs') %>
+
+    <h1>Welcome to PET HAVEN</h1>
+    <% if(message) {%>
+      <%=message %>
+      <% } %>
+    <% if(user) {%>
+    <h1>Hi <%= user.username %></h1>
+    <p>
+      <a href="/auth/sign-out">sign-out</a>
+    </p>
+    <% }else{ %>
+    <p>
+    <h1>Welcome to the app guest</h1>
+    <a href="/auth/sign-up">sign-up</a>
+    <a href="/auth/sign-in">sign-in</a>
+    </p>
+    <%}%>
+    <% if(user && user.isAdmin) {%>
+    <p>
+      <a href="/vip-lounge">You are an admin</a>
+    </p>
+    <% } %>
+  </body>
+</html>
