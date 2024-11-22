@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit <%= pet.name %></title>
+  </head>
+
+  <body>
+    <h1>Edit <%= pet.name %></h1>
+    <form action="/applications/<%= pet._id %>/?_method=PUT" method="post">
+      <dev>
+        <label for="petname">Pet Name:</label>
+        <input
+          type="text"
+          name="petname"
+          value="<%= pet.petname %>"
+          id="petname"
+          required
+        />
+      </dev>
+      <dev>
+        <label for="pettype">pet type:</label>
+        <input
+          type="text"
+          name="pettype"
+          value="<%= pet.pettype %>"
+          id="pettype"
+          required
+        />
+      </dev>
+
+      <button type="submit">Update pet</button>
+      <br />
+      <% if(user._id == pet.userId) {%>
+      <p>
+        <a href="/vip-lounge">You are an admin</a>
+      </p>
+      <% } %>
+    </form>
+  </body>
+</html>

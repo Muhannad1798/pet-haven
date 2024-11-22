@@ -35,11 +35,12 @@ app.use(
   })
 )
 
+app.use(passUserToView)
+
 //require controllers
 const authControllers = require('./controllers/auth')
 //use controllers
 app.use('/auth', authControllers)
-app.use(passUserToView)
 
 app.use((req, res, next) => {
   if (req.session.message) {
@@ -60,6 +61,14 @@ app.get('/', async (req, res) => {
 
   res.render('index.ejs')
 })
+
+const petController = require('./controllers/pet')
+app.use('/', petController)
+
+// registrations
+// /registrations index
+// /registrations/:id show
+// URL -> router url. res.redirect , HTML <a href=
 
 app.get('/vip-lounge', isSignedIn, (req, res) => {
   res.send(`Welcome to the party ${req.session.user.username}`)

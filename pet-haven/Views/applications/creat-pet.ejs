@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add new pet</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+
+    <h1>Create a new pet</h1>
+    <form action="/create-pet" method="POST">
+      <label for="petname">name of the pet</label>
+      <input type="text" name="petname" id="petname" /> <br />
+      <label for="pettype">what type of animal</label>
+      <input type="text" name="pettype" id="pettype" /><br />
+      <label for="price">price</label>
+      <input type="number" name="price" id="price" /><br />
+      <label for="bornon">Date of birth</label>
+      <input type="datetime-local" name="bornon" id="bornon" /> <br />
+      <label for="userId">user ID</label>
+      <input type="text" name="userId" id="userId" /><br />
+
+      <button type="submit">add pet</button>
+    </form>
+  </body>
+</html>

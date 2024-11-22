@@ -22,7 +22,7 @@ const petSchema = new mongoose.Schema(
     },
     userId: {
       type: String,
-      require: yes
+      required: true
     },
     img: String
   },
@@ -31,5 +31,5 @@ const petSchema = new mongoose.Schema(
   }
 )
 
-const Pet = mongoose.model('Pet', userSchema)
+const Pet = mongoose.model('Pet', petSchema)
 module.exports = Pet
