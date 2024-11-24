@@ -59,7 +59,7 @@ router.post('/sign-in', async (req, res) => {
       isAdmin: userInDatabase.isAdmin
     }
 
-    res.redirect('/')
+    res.redirect('/show-pet')
   } catch (err) {
     console.log(err)
     req.session.message = 'please try again later'

@@ -24,6 +24,13 @@ const petSchema = new mongoose.Schema(
       type: String,
       required: true
     },
+    description: {
+      type: String
+    },
+    show: {
+      type: Boolean,
+      default: true
+    },
     img: String
   },
   {
