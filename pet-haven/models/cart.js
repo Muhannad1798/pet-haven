@@ -6,15 +6,18 @@ const cartSchema = new mongoose.Schema(
       type: String,
       require: true
     },
-    petId: {
-      type: String,
-      require: true
-    }
+    petId: [
+      {
+        type: String,
+
+        require: true
+      }
+    ]
   },
   {
     timestamps: true
   }
 )
 
-const Cart = mongoose.model('Cart', userSchema)
+const Cart = mongoose.model('Cart', cartSchema)
 module.exports = Cart

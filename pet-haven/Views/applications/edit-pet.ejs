@@ -29,14 +29,58 @@
           required
         />
       </dev>
+      <dev>
+        <label for="bornon">bornon</label>
+        <input
+          type="datetime-local"
+          name="bornon"
+          value="<%= pet.bornon %>"
+          id="bornon"
+          required
+        />
+      </dev>
+      <dev>
+        <label for="description">description</label>
+        <input
+          type="text"
+          name="description"
+          value="<%= pet.description %>"
+          id="description"
+          required
+        />
+      </dev>
+      <% if(user._id == pet.userId|| user.isAdmin == true) {%>
 
       <button type="submit">Update pet</button>
-      <br />
-      <% if(user._id == pet.userId) {%>
-      <p>
-        <a href="/vip-lounge">You are an admin</a>
-      </p>
       <% } %>
+
+      <br />
+      
     </form>
+    <% if(user._id == pet.userId|| user.isAdmin == true) {%>
+      <p>
+        <form action="/applications/<%= pet._id %>/?_method=DELETE" method="POST">
+          <button type="submit">Delete this pet</button>
+        </form>
+        </p>
+      <% } %>
+
+
+      <% if(user._id != pet.userId) {%>
+        <p>
+          <% if(!isThere){ %>
+
+          <form action="/applications/<%= pet._id %>" method="POST">
+
+            <button type="submit">Add to cart</button>
+          </form>
+          <% } else{ %> 
+            <form action="/applications/<%= pet._id %>?_method=DELETE" method="POST">
+
+              <button type="submit">remove from cart</button>
+            <% } %>
+          </p>
+
+        <% } %>  
   </body>
 </html>

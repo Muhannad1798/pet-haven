@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
 const bcrypt = require('bcrypt')
+const Cart = require('../models/cart')
 
 router.get('/sign-up', (req, res) => {
   res.render('auth/sign-up.ejs')
@@ -27,6 +28,8 @@ router.post('/sign-up', async (req, res) => {
 
   //save/create the user
   const user = await User.create(req.body)
+  const cart = await User.create(req.body)
+
   res.send(`Thanks for signing up ${user.username}`)
 })
 

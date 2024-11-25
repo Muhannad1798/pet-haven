@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const Pet = require('./pet')
 
 const userSchema = new mongoose.Schema(
   {
@@ -24,7 +25,19 @@ const userSchema = new mongoose.Schema(
       minlength: [7, 'write a valid phone number'],
       maxlength: [10, 'write a valid phone number'],
       require: true
-    }
+    },
+    cart: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: Pet
+      }
+    ],
+    order: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: Pet
+      }
+    ]
   },
   {
     timestamps: true

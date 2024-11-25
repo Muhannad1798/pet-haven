@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PETS</title>
+  </head>
+  <body>
+    <h1>My pets</h1>
+    <ul>
+      <% myPet.forEach(pet => { %>
+      <li>
+        <a href="/applications/<%= pet._id %>/edit-pet"> <%= pet.petname %> </a>
+      </li>
+
+      <% }); %>
+    </ul>
+  </body>
+</html>
