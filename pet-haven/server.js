@@ -63,7 +63,12 @@ app.get('/', async (req, res) => {
 })
 
 const petController = require('./controllers/pet')
+const removeController = require('./controllers/remove')
+const orderController = require('./controllers/order')
+
 app.use('/', petController)
+app.use('/remove-pet', removeController)
+app.use('/order-pet', orderController)
 
 // registrations
 // /registrations index

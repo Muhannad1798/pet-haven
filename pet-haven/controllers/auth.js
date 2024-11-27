@@ -28,7 +28,6 @@ router.post('/sign-up', async (req, res) => {
 
   //save/create the user
   const user = await User.create(req.body)
-  const cart = await User.create(req.body)
 
   res.send(`Thanks for signing up ${user.username}`)
 })
@@ -61,6 +60,7 @@ router.post('/sign-in', async (req, res) => {
       _id: userInDatabase._id,
       isAdmin: userInDatabase.isAdmin
     }
+    const cart = await Cart.find()
 
     res.redirect('/show-pet')
   } catch (err) {

@@ -13,12 +13,41 @@ router.post('/create-pet', async (req, res) => {
   await Pet.create(req.body)
   res.redirect('/create-pet')
 })
+router.get('/past-orders', async (req, res) => {
+  const user = await User.findById(req.session.user._id).populate('order')
 
+  res.render('applications/past-orders.ejs', { pets: user.order })
+})
 router.get('/show-pet', async (req, res) => {
   const pets = await Pet.find()
   res.render('applications/show-pet.ejs', { pets: pets })
 })
 
+router.get('/my-cart', async (req, res) => {
+  const user = await User.findById(req.session.user._id).populate('cart')
+  console.log(user)
+
+  // const pets = []
+
+  // user.cart.forEach(async(c) =>{
+  //   const pet = await Pet.findById(c)
+  //   pets.push()
+  // })
+  res.render('applications/my-cart.ejs', { pets: user.cart })
+})
+
+router.get('/applications/:petId/order-pet', async (req, res) => {
+  const id = req.params.petId
+  const pet = await Pet.findById(id)
+  const user = await User.findById(req.session.user._id)
+  /* user.order.push(id)
+  await user.save()
+
+  pet.show = false
+  await pet.save()
+  */
+  res.render('applications/order-pet.ejs', { pet: pet })
+})
 router.get('/applications/:petId/edit-pet', async (req, res) => {
   const id = req.params.petId
   const pet = await Pet.findById(id)
@@ -40,7 +69,11 @@ router.get('/applications/:petId/edit-pet', async (req, res) => {
       isThere = true
     }
   })
-  res.render(`applications/edit-pet.ejs`, { pet: pet, isThere: isThere })
+  if (isThere == true) {
+    res.render(`applications/remove-pet.ejs`, { pet: pet, isThere: isThere })
+  } else {
+    res.render(`applications/edit-pet.ejs`, { pet: pet, isThere: isThere })
+  }
 })
 
 router.put('/applications/:petId', async (req, res) => {
@@ -86,17 +119,19 @@ router.get('/my-pet', async (req, res) => {
   })
   res.render('applications/my-pet.ejs', { myPet: myPet })
 })
-
 /*
-router.delete('/:listingId', async (req, res) => {
+router.post('/applications/remove-pet/:petId', async (req, res) => {
   try {
-    const listing = await Listing.findById(req.params.listingId)
-    if (listing.owner.equals(req.session.user._id)) {
-      await listing.deleteOne()
-      res.redirect('/listings')
-    } else {
-      res.send("You don't have permission to do that.")
-    }
+    const pet = await Pet.findById(req.params.petId)
+    const user = await User.findById(req.session.user._id)
+    const i = user.cart.findIndex(req.params.petId)
+
+    // user.cart.splice(i, 1)
+    // await user.save()
+    await User.findByIdAndUpdate(req.session.user._id, {
+      $pull: { cart: req.params.petId }
+    })
+    res.redirect('/show-pet')
   } catch (error) {
     console.error(error)
     res.redirect('/')

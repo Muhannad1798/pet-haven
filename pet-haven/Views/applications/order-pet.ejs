@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit <%= pet.name %></title>
+    <title>order <%= pet.name %></title>
   </head>
 
   <body>
-    <h1>Edit <%= pet.name %></h1>
+    <h1>yow want to order <%= pet.name %></h1>
     <form action="/applications/<%= pet._id %>/?_method=PUT" method="post">
       <dev>
         <label for="petname">Pet Name:</label>
@@ -57,25 +57,15 @@
       <br />
       
     </form>
-    <% if(user._id == pet.userId|| user.isAdmin == true) {%>
+    
       <p>
-        <form action="/applications/<%= pet._id %>/?_method=DELETE" method="POST">
-          <button type="submit">Delete this pet</button>
+        <form action="/order-pet/applications/<%= pet._id %>?_method=put" method="POST">
+          <button type="submit">order this pet</button>
         </form>
         </p>
-      <% } %>
+      
 
 
-      <% if(user._id != pet.userId) {%>
-        <p>
-
-          <form action="/applications/<%= pet._id %>" method="POST">
-
-            <button type="submit">Add to cart</button>
-          </form>
-          
-          </p>
-
-        <% } %>  
+      
   </body>
 </html>

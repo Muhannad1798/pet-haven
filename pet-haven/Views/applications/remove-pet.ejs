@@ -54,26 +54,21 @@
       <button type="submit">Update pet</button>
       <% } %>
 
+    </form>
+
       <br />
       
-    </form>
-    <% if(user._id == pet.userId|| user.isAdmin == true) {%>
-      <p>
-        <form action="/applications/<%= pet._id %>/?_method=DELETE" method="POST">
-          <button type="submit">Delete this pet</button>
-        </form>
-        </p>
-      <% } %>
+
 
 
       <% if(user._id != pet.userId) {%>
         <p>
 
-          <form action="/applications/<%= pet._id %>" method="POST">
-
-            <button type="submit">Add to cart</button>
-          </form>
           
+            <form action="/remove-pet/applications/<%= pet._id %>?_method=PUT" method="POST">
+
+              <button type="submit">remove from cart...</button>
+              </form>
           </p>
 
         <% } %>  
