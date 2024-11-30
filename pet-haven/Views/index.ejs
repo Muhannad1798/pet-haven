@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Add this: -->
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  
     <title>Home Page</title>
   </head>
   <body>
@@ -20,14 +24,8 @@
     <% }else{ %>
     <p>
     <h1>Welcome to the app guest</h1>
-    <a href="/auth/sign-up">sign-up</a>
-    <a href="/auth/sign-in">sign-in</a>
     </p>
     <%}%>
-    <% if(user && user.isAdmin) {%>
-    <p>
-      <a href="/vip-lounge">You are an admin</a>
-    </p>
-    <% } %>
+    
   </body>
 </html>

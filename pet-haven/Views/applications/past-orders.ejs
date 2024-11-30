@@ -3,9 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Add this: -->
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+
     <title>past orders</title>
   </head>
   <body>
+    <%- include('../partials/_navbar.ejs') %>
+
     <h1>My pets</h1>
     <ul>
       <% pets.forEach(pet => { %>

@@ -1,8 +1,28 @@
-<nav>
-  <a href="/auth/sign-out">Sign Out</a>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Add this: -->
+<link rel="stylesheet" href="/stylesheets/partials.css" />
+<% if(user) { %>
 
-  <a href="/auth/sign-in">Sign In</a>
-  <a href="/auth/sign-up">Sign Up</a>
-  <a href="/create-pet">add pet </a>
-  <a href="/show-pet">show pets</a>
+<nav>
+  <div class="navbar">
+    <h1 id="nav-header">PET HAVEN</h1>
+    <div class="nav-links">
+      <a class="authlink" href="/auth/sign-out">Sign Out</a>
+      <a class="authlink" href="/auth/sign-in">Sign In</a>
+      <a class="authlink" href="/auth/sign-up">Sign Up</a>
+      <a class="authlink" href="/create-pet">add pet </a>
+      <a class="authlink" href="/show-pet">show pets</a>
+      <a class="authlink" href="/my-cart">cart</a>
+      <a class="authlink" href="/past-orders">my orders</a>
+    </div>
+  </div>
+  <% } else { %>
+  <div class="navbar">
+    <h1 id="nav-header">PET HAVEN</h1>
+    <div class="nav-links">
+      <a class="authlink" href="/auth/sign-in">Sign In</a>
+      <a class="authlink" href="/auth/sign-up">Sign Up</a>
+    </div>
+  </div>
+  <% } %>
 </nav>
