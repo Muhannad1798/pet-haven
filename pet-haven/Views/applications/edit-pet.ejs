@@ -12,6 +12,7 @@
 
   <body>
     <%- include('../partials/_navbar.ejs') %>
+    <% if(user._id == pet.userId|| user.isAdmin == true) {%>
 
     <h1>Edit <%= pet.name %></h1>
     <form action="/applications/<%= pet._id %>/?_method=PUT" method="post">
@@ -55,11 +56,15 @@
           required
         />
       </dev>
-      <% if(user._id == pet.userId|| user.isAdmin == true) {%>
 
       <button type="submit">Update pet</button>
-      <% } %>
+      <% }else{ %>
+        <h3><%= pet.petname %>: is a <%= pet.pettype %>.</h3> <br />
+        <h3>you can have it for <%= pet.price %> BD</h3>
+        <h3>it was born on <%= pet.bornon %> </h3>
+        <h3>it is <%= pet.description %></h3>
 
+        <% } %>
       <br />
       
     </form>

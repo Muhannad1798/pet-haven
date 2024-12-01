@@ -14,64 +14,21 @@
     <%- include('../partials/_navbar.ejs') %>
 
     <h1>yow want to order <%= pet.name %></h1>
-    <form action="/applications/<%= pet._id %>/?_method=PUT" method="post">
-      <dev>
-        <label for="petname">Pet Name:</label>
-        <input
-          type="text"
-          name="petname"
-          value="<%= pet.petname %>"
-          id="petname"
-          required
-        />
-      </dev>
-      <dev>
-        <label for="pettype">pet type:</label>
-        <input
-          type="text"
-          name="pettype"
-          value="<%= pet.pettype %>"
-          id="pettype"
-          required
-        />
-      </dev>
-      <dev>
-        <label for="bornon">bornon</label>
-        <input
-          type="datetime-local"
-          name="bornon"
-          value="<%= pet.bornon %>"
-          id="bornon"
-          required
-        />
-      </dev>
-      <dev>
-        <label for="description">description</label>
-        <input
-          type="text"
-          name="description"
-          value="<%= pet.description %>"
-          id="description"
-          required
-        />
-      </dev>
-      <% if(user._id == pet.userId|| user.isAdmin == true) {%>
-
-      <button type="submit">Update pet</button>
-      <% } %>
-
-      <br />
-      
-    </form>
+    
+        
+  
     
       <p>
+        <h3><%= pet.petname %>: is a <%= pet.pettype %>.</h3> <br />
+        <h3>you can have it for <%= pet.price %> BD</h3>
+        <h3>it was born on <%= pet.bornon %> </h3>
+        <h3>it is <%= pet.description %></h3>
+
         <form action="/order-pet/applications/<%= pet._id %>?_method=put" method="POST">
           <button type="submit">order this pet</button>
         </form>
         </p>
-      
-
-
+        
       
   </body>
 </html>

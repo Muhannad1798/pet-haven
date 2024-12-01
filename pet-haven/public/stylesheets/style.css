@@ -3,6 +3,7 @@ body {
   font-size: 17px;
   background-color: #ccc;
   overflow-x: hidden;
+  line-break: normal;
 }
 
 label {
@@ -64,10 +65,23 @@ button:hover {
 body {
   margin: 0;
   padding: 0;
-  display: flex;
+  display: block;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   font-family: 'Jost', sans-serif;
   background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+  line-break: normal;
+  text-align: center;
+}
+
+ul {
+  display: block;
+  flex-wrap: wrap;
+}
+
+ul {
+  width: 100%;
+  max-width: 100%;
 }

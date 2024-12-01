@@ -13,6 +13,7 @@
     <%- include('./partials/_navbar.ejs') %>
 
     <h1>Welcome to PET HAVEN</h1>
+    <br />
     <% if(message) {%>
       <%=message %>
       <% } %>
@@ -22,8 +23,9 @@
       <a href="/auth/sign-out">sign-out</a>
     </p>
     <% }else{ %>
+      
     <p>
-    <h1>Welcome to the app guest</h1>
+    <h1>Please sign-in or sign-up if you do not have an account</h1>
     </p>
     <%}%>
     
